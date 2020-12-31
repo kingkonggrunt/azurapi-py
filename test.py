@@ -52,6 +52,12 @@ class TestStringMethods(unittest.TestCase):
         '''
         self.api.getAllShipsFromFaction(faction='Sakura Empire')
 
+    def test_get_all_ships_by_rarity(self):
+        '''
+        No assertion as this is for general testing
+        '''
+        self.api.getAllShipsByRarity(rarity="Ultra Rare")
+
 
 if __name__ == '__main__':
     unittest.main(failfast=True)

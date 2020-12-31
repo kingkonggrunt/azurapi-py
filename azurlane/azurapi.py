@@ -143,6 +143,13 @@ class AzurAPI:
             
         return [ship for ship in self.getAllShips() if to_lower_trimmed(ship['nationality']) == nation]
 
+    def getAllShipsByRarity(self, rarity):
+        try:
+            rarity = to_lower_trimmed(get_rarity_from_input(rarity))
+        except AttributeError:
+            raise UnknownRarityException(f'Unknown rarity: "{rarity}"')
+
+        return [ship for ship in self.getAllShips() if to_lower_trimmed(ship['rarity']) == rarity]
     
     # Alternative names for the same method
     getAllShipsFromNation = getAllShipsFromFaction

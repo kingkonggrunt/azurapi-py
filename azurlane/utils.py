@@ -22,6 +22,9 @@ class UnknownMemoryException(AzurApiException):
 class UnknownFactionException(AzurApiException):
     pass
 
+class UnknownRarityException(AzurApiException):
+    pass
+
 class UnknownEquipmentException(AzurApiException):
     pass
 #endregion
@@ -89,4 +92,20 @@ def get_faction_from_input(input_value):
                 break
                 
     return nation
+#end region
+
+#rarity Helper
+rarities = ['Decisive', 'Priority', 'Ultra Rare', 'Super Rare', 'Elite', 'Rare', 'Normal']
+
+def get_rarity_from_input(input_value):
+
+    if not is_valid(input_value): return False
+
+    rarity = False
+    lower_trimmed_input = to_lower_trimmed(input_value)
+
+    for value in rarities:
+        if lower_trimmed_input in to_lower_trimmed(value):
+            rarity = lower_trimmed_input
+    return rarity
 #end region
